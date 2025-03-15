@@ -75,10 +75,10 @@ export default function AboutPage() {
                   descentralizados.
                 </p>
                 <div className="flex gap-4">
-                  <Link href="#" className="text-blue-400 hover:text-blue-300">
+                  <Link href="https://x.com/pedreira32910?t=CIUYjiTUFWBnqJo7xYJhQw&s=09" target="_blank" className="text-blue-400 hover:text-blue-300">
                     <Twitter className="h-5 w-5" />
                   </Link>
-                  <Link href="#" className="text-blue-400 hover:text-blue-300">
+                  <Link href="https://www.linkedin.com/in/rogerio-resende-2b96a237/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" className="text-blue-400 hover:text-blue-300">
                     <Linkedin className="h-5 w-5" />
                   </Link>
                   <Link href="#" className="text-blue-400 hover:text-blue-300">
@@ -107,13 +107,13 @@ export default function AboutPage() {
                   Especialista em desenvolvimento full-stack com experiência em aplicações Web3 e DeFi.
                 </p>
                 <div className="flex gap-4">
-                  <Link href="#" className="text-blue-400 hover:text-blue-300">
+                  <Link href="https://x.com/juniorwebyte" target="_blank" className="text-blue-400 hover:text-blue-300">
                     <Twitter className="h-5 w-5" />
                   </Link>
-                  <Link href="#" className="text-blue-400 hover:text-blue-300">
+                  <Link href="https://www.linkedin.com/in/jos%C3%A9-de-figueredo-alves-j%C3%BAnior-6a625049/" target="_blank" className="text-blue-400 hover:text-blue-300">
                     <Linkedin className="h-5 w-5" />
                   </Link>
-                  <Link href="#" className="text-blue-400 hover:text-blue-300">
+                  <Link href="https://github.com/juniorwebyte" target="_blank" className="text-blue-400 hover:text-blue-300">
                     <Github className="h-5 w-5" />
                   </Link>
                 </div>
