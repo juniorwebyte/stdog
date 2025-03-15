@@ -1,3 +1,5 @@
+'use client'  // Adicione esta linha no início do arquivo
+
 import dynamic from "next/dynamic"
 import GalaxyAnimation from "@/components/galaxy-animation"
 import Navbar from "@/components/navbar"
