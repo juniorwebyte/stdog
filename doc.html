@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Documentação de Implantação - Street Dog Coin</title>
+   <style>
+       body {
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           line-height: 1.6;
+           color: #333;
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 20px;
+       }
+       h1, h2, h3, h4 {
+           color: #4338ca;
+       }
+       h1 {
+           border-bottom: 2px solid #4338ca;
+           padding-bottom: 10px;
+       }
+       h2 {
+           margin-top: 30px;
+           border-bottom: 1px solid #e5e7eb;
+           padding-bottom: 5px;
+       }
+       code {
+           background-color: #f1f5f9;
+           padding: 2px 5px;
+           border-radius: 4px;
+           font-family: 'Courier New', Courier, monospace;
+       }
+       pre {
+           background-color: #1e293b;
+           color: #e2e8f0;
+           padding: 15px;
+           border-radius: 8px;
+           overflow-x: auto;
+           font-family: 'Courier New', Courier, monospace;
+       }
+       .note {
+           background-color: #dbeafe;
+           border-left: 4px solid #3b82f6;
+           padding: 15px;
+           margin: 20px 0;
+           border-radius: 0 8px 8px 0;
+       }
+       .warning {
+           background-color: #fee2e2;
+           border-left: 4px solid #ef4444;
+           padding: 15px;
+           margin: 20px 0;
+           border-radius: 0 8px 8px 0;
+       }
+       .success {
+           background-color: #dcfce7;
+           border-left: 4px solid #22c55e;
+           padding: 15px;
+           margin: 20px 0;
+           border-radius: 0 8px 8px 0;
+       }
+       img {
+           max-width: 100%;
+           border: 1px solid #e5e7eb;
+           border-radius: 8px;
+           margin: 15px 0;
+       }
+       table {
+           width: 100%;
+           border-collapse: collapse;
+           margin: 20px 0;
+       }
+       th, td {
+           border: 1px solid #e5e7eb;
+           padding: 10px;
+           text-align: left;
+       }
+       th {
+           background-color: #f8fafc;
+       }
+       .step {
+           margin-bottom: 30px;
+           padding-left: 20px;
+           border-left: 2px solid #4338ca;
+       }
+       .step-number {
+           display: inline-block;
+           width: 30px;
+           height: 30px;
+           background-color: #4338ca;
+           color: white;
+           text-align: center;
+           line-height: 30px;
+           border-radius: 50%;
+           margin-right: 10px;
+       }
+       .tab {
+           overflow: hidden;
+           border: 1px solid #e5e7eb;
+           background-color: #f8fafc;
+           border-radius: 8px 8px 0 0;
+       }
+       .tab button {
+           background-color: inherit;
+           float: left;
+           border: none;
+           outline: none;
+           cursor: pointer;
+           padding: 14px 16px;
+           transition: 0.3s;
+           font-size: 16px;
+       }
+       .tab button:hover {
+           background-color: #ddd;
+       }
+       .tab button.active {
+           background-color: #4338ca;
+           color: white;
+       }
+       .tabcontent {
+           display: none;
+           padding: 20px;
+           border: 1px solid #e5e7eb;
+           border-top: none;
+           border-radius: 0 0 8px 8px;
+       }
+   </style>
+</head>
+<body>
+   <h1>Documentação de Implantação - Street Dog Coin (Atualizada)</h1>
+   
+   <p>Este documento fornece instruções detalhadas para implantar a aplicação Street Dog Coin em servidores web, com foco específico em como fazer isso usando VS Code e PHPStorm. Inclui as novas otimizações de performance implementadas.</p>
+
+   <h2>Índice</h2>
+   <ul>
+       <li><a href="#requisitos">Requisitos do Sistema</a></li>
+       <li><a href="#ambiente">Configuração do Ambiente</a></li>
+       <li><a href="#implantacao">Passos para Implantação</a></li>
+       <li><a href="#performance">Otimizações de Performance</a></li>
+       <li><a href="#vscode">Implantação com VS Code</a></li>
+       <li><a href="#phpstorm">Implantação com PHPStorm</a></li>
+       <li><a href="#problemas">Solução de Problemas Comuns</a></li>
+   </ul>
+
+   <h2 id="requisitos">Requisitos do Sistema</h2>
+   
+   <p>Antes de começar a implantação, certifique-se de que seu ambiente atende aos seguintes requisitos:</p>
+   
+   <table>
+       <tr>
+           <th>Componente</th>
+           <th>Versão Mínima</th>
+           <th>Recomendada</th>
+       </tr>
+       <tr>
+           <td>Node.js</td>
+           <td>16.x</td>
+           <td>18.x ou superior</td>
+       </tr>
+       <tr>
+           <td>npm</td>
+           <td>8.x</td>
+           <td>9.x ou superior</td>
+       </tr>
+       <tr>
+           <td>Git</td>
+           <td>2.x</td>
+           <td>Última versão</td>
+       </tr>
+       <tr>
+           <td>Servidor Web</td>
+           <td>Nginx 1.18+ ou Apache 2.4+</td>
+           <td>Nginx 1.20+ ou Apache 2.4.46+</td>
+       </tr>
+   </table>
+
+   <div class="note">
+       <strong>Nota:</strong> Esta aplicação é construída com Next.js, que pode ser implantada como uma aplicação Node.js ou exportada como arquivos estáticos.
+   </div>
+
+   <h2 id="ambiente">Configuração do Ambiente</h2>
+
+   <h3>Instalação do Node.js e npm</h3>
+   
+   <div class="step">
+       <p><span class="step-number">1</span> <strong>Instale o Node.js e npm</strong></p>
+       <p>Baixe e instale o Node.js a partir do <a href="https://nodejs.org/" target="_blank">site oficial</a>. Isso também instalará o npm.</p>
+       <p>Verifique a instalação com:</p>
+       <pre>node --version
+npm --version</pre>
+   </div>
+
+   <h3>Instalação do Git</h3>
+   
+   <div class="step">
+       <p><span class="step-number">2</span> <strong>Instale o Git</strong></p>
+       <p>Baixe e instale o Git a partir do <a href="https://git-scm.com/" target="_blank">site oficial</a>.</p>
+       <p>Verifique a instalação com:</p>
+       <pre>git --version</pre>
+   </div>
+
+   <h2 id="implantacao">Passos para Implantação</h2>
+
+   <h3>Clonando o Repositório</h3>
+   
+   <div class="step">
+       <p><span class="step-number">1</span> <strong>Clone o repositório</strong></p>
+       <pre>git clone [URL_DO_REPOSITÓRIO]
+cd street-dog-coin</pre>
+   </div>
+
+   <h3>Instalando Dependências</h3>
+   
+   <div class="step">
+       <p><span class="step-number">2</span> <strong>Instale as dependências</strong></p>
+       <pre>npm install</pre>
+   </div>
+
+   <h3>Configuração de Variáveis de Ambiente</h3>
+   
+   <div class="step">
+       <p><span class="step-number">3</span> <strong>Configure as variáveis de ambiente</strong></p>
+       <p>Crie um arquivo <code>.env.local</code> na raiz do projeto com as seguintes variáveis:</p>
+       <pre># Exemplo de .env.local
+NEXT_PUBLIC_SITE_URL=https://seu-dominio.com
+# Adicione outras variáveis conforme necessário</pre>
+   </div>
+
+   <h3>Construção da Aplicação</h3>
+   
+   <div class="step">
+       <p><span class="step-number">4</span> <strong>Construa a aplicação para produção</strong></p>
+       <pre>npm run build</pre>
+   </div>
+
+   <h2 id="performance">Otimizações de Performance</h2>
+
+   <div class="success">
+       <strong>Novo!</strong> A aplicação agora inclui várias otimizações de performance que melhoram significativamente o tempo de carregamento e a experiência do usuário.
+   </div>
+
+   <h3>Recursos de Performance Implementados</h3>
+
+   <ol>
+       <li>
+           <strong>Modo de Baixa Performance</strong>
+           <p>A aplicação agora detecta automaticamente dispositivos de baixa performance e ajusta as animações e efeitos visuais para melhorar a experiência do usuário. Além disso, foi adicionado um botão "Modo Leve" que permite aos usuários alternar manualmente entre os modos de alta e baixa performance.</p>
+       </li>
+       <li>
+           <strong>Lazy Loading de Componentes</strong>
+           <p>Componentes pesados como AirdropClaim e CountdownTimer agora são carregados de forma lazy, melhorando o tempo de carregamento inicial da página.</p>
+       </li>
+       <li>
+           <strong>Otimização de Imagens</strong>
+           <p>As imagens agora são otimizadas com atributos priority para imagens críticas e lazy loading para imagens abaixo da dobra.</p>
+       </li>
+       <li>
+           <strong>Memoização de Componentes</strong>
+           <p>Componentes que não precisam re-renderizar frequentemente agora são memoizados com React.memo.</p>
+       </li>
+       <li>
+           <strong>Animações Otimizadas</strong>
+           <p>As animações CSS foram simplificadas e otimizadas para usar menos recursos, e agora respeitam a preferência do usuário por movimento reduzido (prefers-reduced-motion).</p>
+       </li>
+   </ol>
+
+   <h3>Configuração das Otimizações</h3>
+
+   <p>As otimizações de performance são aplicadas automaticamente, mas você pode ajustar alguns parâmetros no arquivo <code>components/client-provider.tsx</code> para personalizar a detecção de dispositivos de baixa performance.</p>
+
+   <div class="tab">
+       <button class="tablinks" onclick="openTab(event, 'NodeServer')" id="defaultOpen">Servidor Node.js</button>
+       <button class="tablinks" onclick="openTab(event, 'StaticFiles')">Arquivos Estáticos</button>
+       <button class="tablinks" onclick="openTab(event, 'Vercel')">Vercel</button>
+   </div>
+
+   <div id="NodeServer" class="tabcontent">
+       <h4>Implantação como Servidor Node.js</h4>
+       <p>Para implantar como uma aplicação Node.js:</p>
+       <ol>
+           <li>Transfira os arquivos do projeto para o servidor</li>
+           <li>Instale as dependências: <code>npm install --production</code></li>
+           <li>Inicie o servidor: <code>npm start</code></li>
+       </ol>
+       <p>Para manter o servidor rodando, use um gerenciador de processos como PM2:</p>
+       <pre>npm install -g pm2
+pm2 start npm --name "street-dog-coin" -- start</pre>
+       <p>Configure o Nginx como proxy reverso:</p>
+       <pre>server {
+   listen 80;
+   server_name seu-dominio.com;
+
+   location / {
+       proxy_pass http://localhost:3000;
+       proxy_http_version 1.1;
+       proxy_set_header Upgrade $http_upgrade;
+       proxy_set_header Connection 'upgrade';
+       proxy_set_header Host $host;
+       proxy_cache_bypass $http_upgrade;
+   }
+}</pre>
+   </div>
+
+   <div id="StaticFiles" class="tabcontent">
+       <h4>Implantação como Arquivos Estáticos</h4>
+       <p>Para exportar como arquivos estáticos:</p>
+       <ol>
+           <li>Modifique o arquivo <code>next.config.js</code> para incluir:</li>
+       </ol>
+       <pre>module.exports = {
+ output: 'export',
+ // outras configurações...
+}</pre>
+       <ol start="2">
+           <li>Execute o build: <code>npm run build</code></li>
+           <li>Os arquivos estáticos serão gerados na pasta <code>out</code></li>
+           <li>Faça upload desses arquivos para seu servidor web</li>
+       </ol>
+       <p>Configuração do Nginx para arquivos estáticos:</p>
+       <pre>server {
+   listen 80;
+   server_name seu-dominio.com;
+   root /caminho/para/pasta/out;
+   index index.html;
+
+   location / {
+       try_files $uri $uri.html $uri/ =404;
+   }
+}</pre>
+   </div>
+
+   <div id="Vercel" class="tabcontent">
+       <h4>Implantação na Vercel</h4>
+       <p>A Vercel é a plataforma recomendada para aplicações Next.js:</p>
+       <ol>
+           <li>Instale a CLI da Vercel: <code>npm install -g vercel</code></li>
+           <li>Execute o comando: <code>vercel</code> na raiz do projeto</li>
+           <li>Siga as instruções para fazer login e configurar o projeto</li>
+       </ol>
+       <p>Para implantar em produção:</p>
+       <pre>vercel --prod</pre>
+       <p>Ou conecte seu repositório GitHub à Vercel para implantações automáticas.</p>
+       <div class="note">
+           <strong>Dica:</strong> A Vercel otimiza automaticamente imagens e aplica outras melhorias de performance, tornando-a ideal para esta aplicação.
+       </div>
+   </div>
+
+   <h2 id="vscode">Implantação com VS Code</h2>
+
+   <h3>Configuração do VS Code</h3>
+   
+   <div class="step">
+       <p><span class="step-number">1</span> <strong>Instale extensões úteis</strong></p>
+       <ul>
+           <li>Remote - SSH: Para conectar-se a servidores remotos</li>
+           <li>Azure App Service: Para implantação no Azure</li>
+           <li>GitHub Actions: Para configurar fluxos de CI/CD</li>
+           <li>Docker: Para containerização</li>
+       </ul>
+   </div>
+
+   <h3>Implantação via SSH com VS Code</h3>
+   
+   <div class="step">
+       <p><span class="step-number">2</span> <strong>Configure a conexão SSH</strong></p>
+       <ol>
+           <li>Abra a paleta de comandos (Ctrl+Shift+P)</li>
+           <li>Digite "Remote-SSH: Connect to Host"</li>
+           <li>Configure um novo host ou selecione um existente</li>
+       </ol>
+       <p>Uma vez conectado ao servidor:</p>
+       <ol>
+           <li>Abra a pasta do projeto no servidor</li>
+           <li>Use o terminal integrado para executar comandos de build e implantação</li>
+       </ol>
+   </div>
+
+   <h3>Usando o Terminal Integrado</h3>
+   
+   <div class="step">
+       <p><span class="step-number">3</span> <strong>Execute comandos de implantação</strong></p>
+       <p>Abra o terminal integrado (Ctrl+`) e execute:</p>
+       <pre>git pull origin main
+npm install
+npm run build
+pm2 restart street-dog-coin</pre>
+   </div>
+
+   <h3>Configurando Tarefas no VS Code</h3>
+   
+   <div class="step">
+       <p><span class="step-number">4</span> <strong>Crie tarefas de implantação</strong></p>
+       <p>Crie um arquivo <code>.vscode/tasks.json</code> com tarefas de implantação:</p>
+       <pre>{
+ "version": "2.0.0",
+ "tasks": [
+   {
+     "label": "Deploy to Production",
+     "type": "shell",
+     "command": "npm run build && vercel --prod",
+     "problemMatcher": []
+   },
+   {
+     "label": "Deploy to Staging",
+     "type": "shell",
+     "command": "npm run build && vercel",
+     "problemMatcher": []
+   },
+   {
+     "label": "Toggle Performance Mode",
+     "type": "shell",
+     "command": "node scripts/toggle-performance-mode.js",
+     "problemMatcher": []
+   }
+ ]
+}</pre>
+       <p>Execute estas tarefas através da paleta de comandos: "Tasks: Run Task"</p>
+   </div>
+
+   <h2 id="phpstorm">Implantação com PHPStorm</h2>
+
+   <h3>Configuração do PHPStorm</h3>
+   
+   <div class="step">
+       <p><span class="step-number">1</span> <strong>Configure o Node.js e npm</strong></p>
+       <ol>
+           <li>Vá para File > Settings > Languages & Frameworks > Node.js and NPM</li>
+           <li>Verifique se o caminho para o Node.js está correto</li>
+           <li>Habilite o Node.js Core library</li>
+       </ol>
+   </div>
+
+   <h3>Configuração de Implantação</h3>
+   
+   <div class="step">
+       <p><span class="step-number">2</span> <strong>Configure servidores de implantação</strong></p>
+       <ol>
+           <li>Vá para Tools > Deployment > Configuration</li>
+           <li>Adicione um novo servidor (SFTP, FTP ou FTPS)</li>
+           <li>Configure as credenciais e caminhos de implantação</li>
+       </ol>
+   </div>
+
+   <h3>Implantação Automática</h3>
+   
+   <div class="step">
+       <p><span class="step-number">3</span> <strong>Configure mapeamentos de implantação</strong></p>
+       <ol>
+           <li>Na configuração de implantação, vá para a aba "Mappings"</li>
+           <li>Configure o diretório local e o caminho no servidor</li>
+           <li>Para arquivos estáticos, mapeie a pasta "out" para o diretório raiz do servidor web</li>
+       </ol>
+   </div>
+
+   <h3>Usando o Terminal Integrado</h3>
+   
+   <div class="step">
+       <p><span class="step-number">4</span> <strong>Execute comandos de build e implantação</strong></p>
+       <p>Abra o terminal integrado e execute:</p>
+       <pre>npm run build</pre>
+       <p>Em seguida, use Tools > Deployment > Upload to [seu-servidor] para fazer upload dos arquivos.</p>
+   </div>
+
+   <h3>Configurando Run Configurations</h3>
+   
+   <div class="step">
+       <p><span class="step-number">5</span> <strong>Crie configurações de execução</strong></p>
+       <ol>
+           <li>Vá para Run > Edit Configurations</li>
+           <li>Adicione uma nova configuração npm</li>
+           <li>Selecione o script "build" e adicione opções conforme necessário</li>
+           <li>Crie outra configuração para "start" ou "deploy"</li>
+       </ol>
+   </div>
+
+   <h2 id="problemas">Solução de Problemas Comuns</h2>
+
+   <h3>Problemas de Build</h3>
+   
+   <div class="warning">
+       <strong>Problema:</strong> Falha no build com erros de módulos não encontrados.<br>
+       <strong>Solução:</strong> Verifique se todas as dependências estão instaladas corretamente. Execute <code>npm install</code> novamente.
+   </div>
+
+   <div class="warning">
+       <strong>Problema:</strong> Erros de variáveis de ambiente.<br>
+       <strong>Solução:</strong> Certifique-se de que todas as variáveis de ambiente necessárias estão definidas no arquivo <code>.env.local</code> ou no ambiente do servidor.
+   </div>
+
+   <h3>Problemas de Servidor</h3>
+   
+   <div class="warning">
+       <strong>Problema:</strong> Aplicação não inicia no servidor.<br>
+       <strong>Solução:</strong> Verifique os logs com <code>pm2 logs</code>. Certifique-se de que a porta não está sendo usada por outro processo.
+   </div>
+
+   <div class="warning">
+       <strong>Problema:</strong> Erro 502 Bad Gateway no Nginx.<br>
+       <strong>Solução:</strong> Verifique se a aplicação Node.js está rodando e se a configuração do proxy no Nginx está correta.
+   </div>
+
+   <h3>Problemas de Performance</h3>
+   
+   <div class="warning">
+       <strong>Problema:</strong> Animações lentas em dispositivos móveis.<br>
+       <strong>Solução:</strong> Ative o "Modo Leve" clicando no botão flutuante no canto inferior direito da tela.
+   </div>
+
+   <div class="warning">
+       <strong>Problema:</strong> Alto consumo de memória.<br>
+       <strong>Solução:</strong> Verifique se o modo de baixa performance está ativado automaticamente. Se não, modifique o arquivo <code>components/client-provider.tsx</code> para ajustar os critérios de detecção.
+   </div>
+
+   <h3>Problemas de Permissão</h3>
+   
+   <div class="warning">
+       <strong>Problema:</strong> Erros de permissão ao tentar escrever arquivos.<br>
+       <strong>Solução:</strong> Verifique as permissões dos diretórios. Use <code>chown -R</code> e <code>chmod -R</code> para ajustar as permissões conforme necessário.
+   </div>
+
+   <script>
+       function openTab(evt, tabName) {
+           var i, tabcontent, tablinks;
+           tabcontent = document.getElementsByClassName("tabcontent");
+           for (i = 0; i < tabcontent.length; i++) {
+               tabcontent[i].style.display = "none";
+           }
+           tablinks = document.getElementsByClassName("tablinks");
+           for (i = 0; i < tablinks.length; i++) {
+               tablinks[i].className = tablinks[i].className.replace(" active", "");
+           }
+           document.getElementById(tabName).style.display = "block";
+           evt.currentTarget.className += " active";
+       }
+
+       // Get the element with id="defaultOpen" and click on it
+       document.getElementById("defaultOpen").click();
+   </script>
+</body>
+</html>
+
