@@ -130,15 +130,20 @@ export default function AboutPage() {
               <div className="space-y-4 text-gray-300">
                 <p>
                   Tudo começou com uma visão ousada: usar a tecnologia para transformar a vida de animais abandonados e
-                  dar a eles uma nova chance. Enquanto o mundo cripto crescia, um grupo de apaixonados por animais
+                  dar a eles uma nova chance. 
+                  Enquanto o mundo cripto crescia, um grupo de apaixonados por animais
                   percebeu uma oportunidade única – e se cada transação pudesse salvar vidas? Assim, em 2021, nasceu a
-                  Street Dog Coin (STDOG), um token criado para unir blockchain e impacto social. Nossa Jornada: 2022 –
+                  Street Dog Coin (STDOG), um token criado para unir blockchain e impacto social. 
+                  Nossa Jornada: 2022 –
                   Estruturamos o whitepaper e tokenomics. 2023-2024 – Estudamos a viabilidade da fábrica de ração e do
-                  abrigo para cães, criando soluções reais para os animais. 2025 – Lançamento do token e airdrop!
+                  abrigo para cães, criando soluções reais para os animais. 
+                  2025 – Lançamento do token e airdrop!
                   Expansão para marketplace pet, DEX, NFTs sociais e doações rastreáveis. Por que o STDOG será um
-                  sucesso? Inovação real: Um token com propósito e impacto direto. Transparência total: Cada doação é
+                  sucesso? Inovação real: Um token com propósito e impacto direto. 
+                  Transparência total: Cada doação é
                   rastreável via blockchain. Sustentabilidade: Criamos um ecossistema financeiro para transformar o
-                  mercado pet. Junte-se a nós! Invista, compartilhe e ajude a construir um futuro onde nenhum cão seja
+                  mercado pet. 
+                  Junte-se a nós! Invista, compartilhe e ajude a construir um futuro onde nenhum cão seja
                   esquecido! STDOG – O Token Que Salva Vidas!
                 </p>
               </div>

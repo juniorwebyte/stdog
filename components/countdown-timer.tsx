@@ -63,7 +63,7 @@ export default function CountdownTimer() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
     // Atualizar a cada segundo apenas se não preferir reduzir animações
-    const updateInterval = prefersReducedMotion ? 10000 : 1000 // 10 segundos ou 1 segundo
+    const updateInterval = prefersReducedMotion ? 10000 : 100 // 10 segundos ou 1 segundo
 
     // Atualizar a cada segundo
     const timer = setInterval(() => {

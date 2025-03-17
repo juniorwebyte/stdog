@@ -368,7 +368,7 @@ export default function Home() {
               <StatCounter value={10000} label="Participantes" />
               <StatCounter value={100} label="$STDOG por Airdrop" />
               <StatCounter value={5} label="Tarefas Simples" />
-              <StatCounter value={10} label="Futuras ONGs Beneficiadas" />
+              <StatCounter value={4} label="Parceiros Cripto" />
             </div>
           </motion.div>
         </div>

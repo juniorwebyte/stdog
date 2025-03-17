@@ -19,16 +19,16 @@ export default function Footer() {
             </div>
             <p className="text-gray-300 mb-4">{t("footer.about.description")}</p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link href="https://x.com/StreetDogCoin" target="_blank" className="text-blue-400 hover:text-blue-300 transition-colors">
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link href="https://www.facebook.com/streetdogcoin?_rdc=1&_rdr#" target="_blank" className="text-blue-400 hover:text-blue-300 transition-colors">
                 <Facebook className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link href="https://www.instagram.com/streetdogcoin/" target="_blank" className="text-blue-400 hover:text-blue-300 transition-colors">
                 <Instagram className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link href="https://github.com/juniorwebyte" target="_blank" className="text-blue-400 hover:text-blue-300 transition-colors">
                 <Github className="h-5 w-5" />
               </Link>
             </div>
@@ -103,7 +103,7 @@ export default function Footer() {
                   href="mailto:contato@streetdogcoin.org"
                   className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
-                  contato@streetdogcoin.org
+                  contato@streetdogcoin.com
                 </a>
               </li>
               <li className="mt-4">
@@ -121,7 +121,7 @@ export default function Footer() {
         <div className="border-t border-blue-800/30 pt-6 mt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Street Dog Coin. {t("footer.legal.rights")}
+              &copy; {new Date().getFullYear()} Webyte® | Tecnologia Laravel - {t("footer.legal.rights")}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <Link href="/termos-de-servico" className="text-gray-400 hover:text-blue-400 transition-colors">
