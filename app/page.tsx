@@ -13,9 +13,7 @@ import {
   Globe2,
   Heart,
   Users,
-  Calendar,
   CheckCircle,
-  Rocket,
   Award,
   ChevronDown,
   ChevronUp,
@@ -24,7 +22,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
-// Adicionar importações para lazy loading no topo do arquivo
+// Importações para lazy loading
 import dynamic from "next/dynamic"
 
 // Carregar o componente CountdownTimer de forma lazy
@@ -128,9 +126,7 @@ const RoadmapItem = ({ phase, title, items, isActive }) => {
   )
 }
 
-// Atualizar o componente CryptoSymbol para aceitar cores personalizadas
-// Substitua o componente CryptoSymbol existente pelo seguinte:
-
+// Componente CryptoSymbol para símbolos orbitando
 const CryptoSymbol = ({
   symbol,
   delay,
@@ -165,13 +161,11 @@ const CryptoSymbol = ({
 }
 
 export default function Home() {
-  // Adicionar useRouter para navegação
   const router = useRouter()
-  // Adicionar estado para a carteira
   const [walletAddress, setWalletAddress] = useState<string>("")
   const [isWalletConnected, setIsWalletConnected] = useState(false)
 
-  // Função para lidar com a rolagem suave
+  // Função para rolagem suave
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
     if (section) {
@@ -179,7 +173,7 @@ export default function Home() {
     }
   }
 
-  // Função para lidar com o clique no botão Conectar Carteira
+  // Função para o botão Conectar Carteira
   const handleConnectClick = () => {
     router.push("/claim")
   }
@@ -189,8 +183,8 @@ export default function Home() {
       <GalaxyAnimation />
       <Navbar onConnectClick={handleConnectClick} isWalletConnected={isWalletConnected} walletAddress={walletAddress} />
 
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 fade-in">
+      {/* 1. Hero Section */}
+      <section id="hero" className="relative pt-20 pb-16 md:pt-32 md:pb-24 fade-in">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="flex-1 text-center lg:text-left z-10">
@@ -235,7 +229,7 @@ export default function Home() {
                 </Button>
               </motion.div>
 
-              {/* Adicionar o componente CountdownTimer */}
+              {/* Countdown Timer */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -258,8 +252,8 @@ export default function Home() {
                   width={400}
                   height={400}
                   className="rounded-full animate-glow"
-                  priority // Adicionar priority para melhorar o LCP
-                  loading="eager" // Carregar imediatamente
+                  priority
+                  loading="eager"
                 />
 
                 {/* Símbolos de criptomoedas orbitando o logo */}
@@ -360,8 +354,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Estatísticas Section - NOVA SEÇÃO */}
-      <section className="py-16 relative overflow-hidden">
+      {/* 2. Estatísticas Section */}
+      <section id="stats" className="py-12 md:py-16 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -380,8 +374,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 md:py-24 relative overflow-hidden fade-in" id="about">
+      {/* 3. About Section with Mascot */}
+      <section id="about" className="py-16 md:py-24 relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex-1"
+            >
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sobre-D0RZ4hVBvEIqGVceS3ltCXHK3Asf6T.webp"
+                alt="Street Dog Mascot"
+                width={500}
+                height={500}
+                className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex-1"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-blue-400">Conheça o Street Dog</h2>
+              <p className="text-gray-300 text-lg mb-6">
+                Nosso mascote representa a união entre o mundo cripto e a causa dos cães de rua. Com estilo urbano e
+                coração solidário, ele simboliza nossa missão de usar a tecnologia blockchain para fazer a diferença.
+              </p>
+              <div className="space-y-4">
+                <motion.div
+                  whileHover={{ scale: 1.03 }}
+                  className="bg-blue-900/20 border border-blue-800/30 rounded-lg p-4"
+                >
+                  <h4 className="font-semibold text-blue-300 mb-2">Tokenomics Transparentes</h4>
+                  <p className="text-gray-400">2% de cada transação é destinado ao fundo de auxílio aos cães de rua</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.03 }}
+                  className="bg-blue-900/20 border border-blue-800/30 rounded-lg p-4"
+                >
+                  <h4 className="font-semibold text-blue-300 mb-2">Airdrop em Andamento</h4>
+                  <p className="text-gray-400">Participe agora e receba 100 $STDOG tokens gratuitamente</p>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Features Section */}
+      <section id="features" className="py-16 md:py-24 relative overflow-hidden fade-in">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <motion.h2
@@ -460,8 +507,180 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Roadmap Section - NOVA SEÇÃO */}
-      <section className="py-16 md:py-24 relative overflow-hidden" id="roadmap">
+      {/* 5. Banner Section */}
+      <section id="mission" className="py-16 relative overflow-hidden bg-gradient-to-b from-black to-blue-900/20">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex-1"
+            >
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/street-banner-JgZA12ksFSsQCl9cfg4bUBPkxPVfoE.jpeg"
+                alt="Street Dog Banner"
+                width={600}
+                height={600}
+                className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex-1"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-blue-400">
+                Junte-se à Revolução Street Dog Coin
+              </h2>
+              <div className="space-y-4">
+                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mt-1">
+                    <DogIcon className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-blue-300">Ajuda Real</h3>
+                    <p className="text-gray-400">
+                      Cada transação contribui para o fundo de auxílio aos cães de rua, garantindo impacto direto.
+                    </p>
+                  </div>
+                </motion.div>
+                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mt-1">
+                    <Users className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-blue-300">Comunidade Engajada</h3>
+                    <p className="text-gray-400">
+                      Faça parte de uma comunidade que compartilha o amor pelos animais e a paixão por criptomoedas.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Tokenomics Section */}
+      <section id="tokenomics" className="py-16 md:py-24 relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-400">Tokenomics</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto mb-4">
+              Distribuição transparente e sustentável do Street Dog Coin
+            </p>
+            <Link href="/tokenomics">
+              <Button
+                variant="outline"
+                className="border-blue-600 text-blue-400 hover:bg-blue-900/20 hover:scale-105 transition-transform mt-2"
+              >
+                Ver Tokenomics Completo
+              </Button>
+            </Link>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-800/30 backdrop-blur-sm"
+            >
+              <h3 className="text-2xl font-semibold mb-6 text-blue-300">Distribuição de Tokens</h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300">Venda Pública e AirDrop</span>
+                  <span className="text-blue-400 font-medium">40%</span>
+                </div>
+                <div className="w-full bg-blue-900/30 rounded-full h-4">
+                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "40%" }}></div>
+                </div>
+
+                <div className="flex items-center justify-between mt-4">
+                  <span className="text-gray-300">Recompensas e Incentivas</span>
+                  <span className="text-blue-400 font-medium">20%</span>
+                </div>
+                <div className="w-full bg-blue-900/30 rounded-full h-4">
+                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "20%" }}></div>
+                </div>
+
+                <div className="flex items-center justify-between mt-4">
+                  <span className="text-gray-300">Reserva para Construção da Fábrica</span>
+                  <span className="text-blue-400 font-medium">20%</span>
+                </div>
+                <div className="w-full bg-blue-900/30 rounded-full h-4">
+                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "20%" }}></div>
+                </div>
+
+                <div className="flex items-center justify-between mt-4">
+                  <span className="text-gray-300">Parcerias e Doações</span>
+                  <span className="text-blue-400 font-medium">10%</span>
+                </div>
+                <div className="w-full bg-blue-900/30 rounded-full h-4">
+                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "10%" }}></div>
+                </div>
+
+                <div className="flex items-center justify-between mt-4">
+                  <span className="text-gray-300">Equipe e Operações</span>
+                  <span className="text-blue-400 font-medium">10%</span>
+                </div>
+                <div className="w-full bg-blue-900/30 rounded-full h-4">
+                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "10%" }}></div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-800/30 backdrop-blur-sm"
+            >
+              <h3 className="text-2xl font-semibold mb-6 text-blue-300">Detalhes do Token</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mt-1">
+                    <Coins className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-medium text-blue-300">Fornecimento Total</h4>
+                    <p className="text-gray-400">5.000.000.000 $STDOG</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mt-1">
+                    <Award className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-medium text-blue-300">Recompensas</h4>
+                    <p className="text-gray-400">
+                      Ao adquirir STDOG na página oficial, você recebe bônus exclusivos de até 20%! Quanto antes
+                      participar, maior a sua recompensa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Roadmap Section */}
+      <section id="roadmap" className="py-16 md:py-24 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -547,171 +766,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Banner Section */}
-      <section className="py-16 relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="flex-1"
-            >
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/street-banner-JgZA12ksFSsQCl9cfg4bUBPkxPVfoE.jpeg"
-                alt="Street Dog Banner"
-                width={600}
-                height={600}
-                className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
-                loading="lazy" // Usar lazy loading para imagens abaixo da dobra
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="flex-1"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-blue-400">
-                Junte-se à Revolução Street Dog Coin
-              </h2>
-              <div className="space-y-4">
-                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mt-1">
-                    <DogIcon className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2 text-blue-300">Ajuda Real</h3>
-                    <p className="text-gray-400">
-                      Cada transação contribui para o fundo de auxílio aos cães de rua, garantindo impacto direto.
-                    </p>
-                  </div>
-                </motion.div>
-                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mt-1">
-                    <Users className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2 text-blue-300">Comunidade Engajada</h3>
-                    <p className="text-gray-400">
-                      Faça parte de uma comunidade que compartilha o amor pelos animais e a paixão por criptomoedas.
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tokenomics Section - NOVA SEÇÃO */}
-      <section className="py-16 md:py-24 relative overflow-hidden" id="tokenomics">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-400">Tokenomics</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Distribuição transparente e sustentável do Street Dog Coin
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-800/30 backdrop-blur-sm"
-            >
-              <h3 className="text-2xl font-semibold mb-6 text-blue-300">Distribuição de Tokens</h3>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Venda Pública e AirDrop</span>
-                  <span className="text-blue-400 font-medium">40%</span>
-                </div>
-                <div className="w-full bg-blue-900/30 rounded-full h-4">
-                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "40%" }}></div>
-                </div>
-
-                <div className="flex items-center justify-between mt-4">
-                  <span className="text-gray-300">Recompensas e Incentivas</span>
-                  <span className="text-blue-400 font-medium">20%</span>
-                </div>
-                <div className="w-full bg-blue-900/30 rounded-full h-4">
-                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "20%" }}></div>
-                </div>
-
-                <div className="flex items-center justify-between mt-4">
-                  <span className="text-gray-300">Reserva para Construção da Fábrica</span>
-                  <span className="text-blue-400 font-medium">20%</span>
-                </div>
-                <div className="w-full bg-blue-900/30 rounded-full h-4">
-                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "20%" }}></div>
-                </div>
-
-                <div className="flex items-center justify-between mt-4">
-                  <span className="text-gray-300">Parcerias e Doações</span>
-                  <span className="text-blue-400 font-medium">10%</span>
-                </div>
-                <div className="w-full bg-blue-900/30 rounded-full h-4">
-                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "10%" }}></div>
-                </div>
-
-                <div className="flex items-center justify-between mt-4">
-                  <span className="text-gray-300">Equipe e Operações</span>
-                  <span className="text-blue-400 font-medium">10%</span>
-                </div>
-                <div className="w-full bg-blue-900/30 rounded-full h-4">
-                  <div className="bg-blue-500 h-4 rounded-full" style={{ width: "10%" }}></div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-800/30 backdrop-blur-sm"
-            >
-              <h3 className="text-2xl font-semibold mb-6 text-blue-300">Detalhes do Token</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mt-1">
-                    <Coins className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium text-blue-300">Fornecimento Total</h4>
-                    <p className="text-gray-400">5.000.000.000 $STDOG</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mt-1">
-                    <Award className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium text-blue-300">Recompensas</h4>
-                    <p className="text-gray-400">
-                      Ao adquirir STDOG na página oficial, você recebe bônus exclusivos de até 20%! Quanto antes participar, maior a sua recompensa.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section - NOVA SEÇÃO */}
-      <section className="py-16 md:py-24 relative overflow-hidden" id="faq">
+      {/* 8. FAQ Section */}
+      <section id="faq" className="py-16 md:py-24 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -749,61 +805,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section with Mascot */}
-      <section className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-b from-black to-blue-900/20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row-reverse items-center gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="flex-1"
-            >
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sobre-D0RZ4hVBvEIqGVceS3ltCXHK3Asf6T.webp"
-                alt="Street Dog Mascot"
-                width={500}
-                height={500}
-                className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
-                loading="lazy" // Usar lazy loading para imagens abaixo da dobra
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="flex-1"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-blue-400">Conheça o Street Dog</h2>
-              <p className="text-gray-300 text-lg mb-6">
-                Nosso mascote representa a união entre o mundo cripto e a causa dos cães de rua. Com estilo urbano e
-                coração solidário, ele simboliza nossa missão de usar a tecnologia blockchain para fazer a diferença.
-              </p>
-              <div className="space-y-4">
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-blue-900/20 border border-blue-800/30 rounded-lg p-4"
-                >
-                  <h4 className="font-semibold text-blue-300 mb-2">Tokenomics Transparentes</h4>
-                  <p className="text-gray-400">2% de cada transação é destinado ao fundo de auxílio aos cães de rua</p>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-blue-900/20 border border-blue-800/30 rounded-lg p-4"
-                >
-                  <h4 className="font-semibold text-blue-300 mb-2">Airdrop em Andamento</h4>
-                  <p className="text-gray-400">Participe agora e receba 100 $STDOG tokens gratuitamente</p>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 relative overflow-hidden">
+      {/* 9. CTA Section */}
+      <section id="cta" className="py-16 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

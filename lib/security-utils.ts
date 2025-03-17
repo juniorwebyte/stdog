@@ -33,8 +33,8 @@ export async function verifyContract(contractAddress: string): Promise<{
 
     // Lista de contratos verificados do Street Dog Coin
     const verifiedContracts = [
-      "0xA5F0A72A780F69BC6a476Cc6a37E533C2A046434", // Substitua pelo endereço real
-      "0xF5aB1c87149CBF4C415F49C0592D634D58EBD3A7", // Substitua pelo endereço real
+      "0x1234567890123456789012345678901234567890", // Substitua pelo endereço real
+      "0x0987654321098765432109876543210987654321", // Substitua pelo endereço real
     ]
 
     if (verifiedContracts.includes(contractAddress)) {

@@ -12,7 +12,7 @@ export default function TokenomicsPage() {
       <GalaxyAnimation />
       <Navbar isWalletConnected={false} />
 
-      <section className="pt-24 pb-12 relative">
+      <section className="pt-24 pb-12 relative" id="hero">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -31,18 +31,20 @@ export default function TokenomicsPage() {
       <section className="py-12 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
+            {/* Visão Geral */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-800/30 rounded-xl p-8 backdrop-blur-sm mb-12"
+              id="overview"
             >
               <h2 className="text-3xl font-bold mb-6 text-blue-400">Visão Geral</h2>
               <div className="prose prose-invert max-w-none">
                 <p className="text-gray-300">
-                  O Street Dog Coin ($STDOG) é um token ERC-20 com um fornecimento total de 5 bilhão de tokens. O design
-                  econômico do token foi cuidadosamente planejado para garantir a sustentabilidade do projeto a longo
-                  prazo e maximizar o impacto social positivo.
+                  O Street Dog Coin ($STDOG) é um token ERC-20 com um fornecimento total de 5 bilhões de tokens. O
+                  design econômico do token foi cuidadosamente planejado para garantir a sustentabilidade do projeto a
+                  longo prazo e maximizar o impacto social positivo.
                 </p>
                 <p className="text-gray-300 mt-4">
                   Uma característica fundamental do $STDOG é o mecanismo de taxas de transação, que direciona
@@ -52,7 +54,8 @@ export default function TokenomicsPage() {
               </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Fornecimento e Taxas */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12" id="supply-fees">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -69,16 +72,52 @@ export default function TokenomicsPage() {
                     <span className="text-gray-300">Fornecimento Circulante:</span>
                     <span className="text-blue-300 font-semibold">1.500.000.000 STDOG</span>
                   </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">Tokens Bloqueados:</span>
+                    <span className="text-blue-300 font-semibold">3.500.000.000 STDOG</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">Mecanismo de Queima:</span>
+                    <span className="text-blue-300 font-semibold">Não (Em Desenvolvimento)</span>
+                  </div>
                 </div>
               </motion.div>
 
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-800/30 rounded-xl p-8 backdrop-blur-sm"
+              >
+                <h2 className="text-2xl font-bold mb-6 text-blue-400">Taxas de Transação</h2>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">Taxa Total:</span>
+                    <span className="text-blue-300 font-semibold">2%</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">Fundo de Caridade:</span>
+                    <span className="text-blue-300 font-semibold">1%</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">Desenvolvimento e Marketing:</span>
+                    <span className="text-blue-300 font-semibold">1%</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">Isenções para Parceiros:</span>
+                    <span className="text-blue-300 font-semibold">Disponíveis</span>
+                  </div>
+                </div>
+              </motion.div>
             </div>
 
+            {/* Distribuição de Tokens */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="mb-12"
+              id="distribution"
             >
               <h2 className="text-3xl font-bold mb-8 text-blue-400 text-center">Distribuição de Tokens</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -125,7 +164,7 @@ export default function TokenomicsPage() {
                         <Users className="h-8 w-8 text-blue-300" />
                       </div>
                       <h3 className="text-xl font-bold text-blue-400 mb-2">10%</h3>
-                      <p className="text-gray-300">Parcerias e (Doações)</p>
+                      <p className="text-gray-300">Parcerias e Doações</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -144,11 +183,13 @@ export default function TokenomicsPage() {
               </div>
             </motion.div>
 
+            {/* Utilidade do Token */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-800/30 rounded-xl p-8 backdrop-blur-sm mb-12"
+              id="utility"
             >
               <h2 className="text-3xl font-bold mb-6 text-blue-400">Utilidade do Token</h2>
               <div className="space-y-6">
@@ -195,11 +236,13 @@ export default function TokenomicsPage() {
               </div>
             </motion.div>
 
+            {/* Mecanismos de Segurança */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-800/30 rounded-xl p-8 backdrop-blur-sm"
+              id="security"
             >
               <h2 className="text-3xl font-bold mb-6 text-blue-400">Mecanismos de Segurança</h2>
               <div className="space-y-6">

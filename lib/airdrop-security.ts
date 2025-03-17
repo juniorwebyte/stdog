@@ -60,7 +60,7 @@ export async function verifyAirdropTransaction(transactionData: {
     const warnings: string[] = []
 
     // Verificar se o token é o correto
-    const officialTokenAddress = "0xA5F0A72A780F69BC6a476Cc6a37E533C2A046434" // Substitua pelo endereço real
+    const officialTokenAddress = "0x1234567890123456789012345678901234567890" // Substitua pelo endereço real
 
     if (transactionData.tokenAddress !== officialTokenAddress) {
       warnings.push("Endereço do token não corresponde ao token oficial")

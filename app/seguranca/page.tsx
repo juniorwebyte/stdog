@@ -154,8 +154,8 @@ export default function SecurityPage() {
             </p>
 
             <div className="bg-blue-900/20 border border-blue-800/30 rounded-lg p-4">
-              <p className="text-blue-300 font-medium">E-mail de Contato:</p>
-              <p className="text-blue-100">contato@streetdogcoin.com</p>
+              <p className="text-blue-300 font-medium">Email de Segurança:</p>
+              <p className="text-blue-100">seguranca@streetdogcoin.com</p>
             </div>
           </CardContent>
         </Card>

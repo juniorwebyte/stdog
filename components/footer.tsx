@@ -71,23 +71,8 @@ export default function Footer() {
             <h3 className="text-xl font-bold text-blue-400 mb-4">{t("footer.resources.title")}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/recursos" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  {t("footer.resources.resources")}
-                </Link>
-              </li>
-              <li>
                 <Link href="/seguranca" className="text-gray-300 hover:text-blue-400 transition-colors">
                   {t("footer.resources.security")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/whitepaper" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  {t("footer.resources.whitepaper")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/documentacao" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  {t("footer.resources.documentation")}
                 </Link>
               </li>
               <li>
@@ -101,8 +86,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/parcerias" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  {t("footer.resources.partnerships")}
+                <Link href="/status" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  {t("footer.quickLinks.status")}
                 </Link>
               </li>
             </ul>

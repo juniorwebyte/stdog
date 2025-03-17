@@ -242,7 +242,7 @@ export default function AirdropTasks({ walletAddress, walletType }: AirdropTasks
       current: false,
       inputValue: "",
       inputPlaceholder: "Cole o link do seu retweet",
-      link: "https://x.com/StreetDogCoin/status/1899498294054707634",
+      link: "https://x.com/StreetDogCoin/status/1829273641130873292",
       linkText: "Ver tweet para retweet",
       icon: <Twitter className="h-5 w-5 text-blue-400" />,
     },
@@ -252,7 +252,7 @@ export default function AirdropTasks({ walletAddress, walletType }: AirdropTasks
       description: "Curta o tweet do Street Dog Coin",
       status: "pending",
       current: false,
-      link: "https://x.com/intent/like?tweet_id=1899498294054707634",
+      link: "https://x.com/intent/like?tweet_id=1829273641130873292",
       linkText: "Curtir tweet",
       icon: <Heart className="h-5 w-5 text-red-400" />,
     },
@@ -277,7 +277,7 @@ export default function AirdropTasks({ walletAddress, walletType }: AirdropTasks
   const [claimStatus, setClaimStatus] = useState<"idle" | "paying" | "confirming" | "completed" | "failed">("idle")
   const [isExploding, setIsExploding] = useState(false)
   const [hashtags] = useState(
-    "#airdrop #Dogecoin #eth #ShibaInu #mainnet #pepecoin #web3 #crypto #arbitrum #OFFICIALTRUMP #memecoins #StreetDogCoin #TieBank #CryptoForACause #DogAdoption #BlockchainForGood #CryptoWithPurpose #SupportAnimalRescue #DogRescue #StreetDogs #BancoDigital #DogLovers",
+    "#airdrop #Dogecoin #eth #ShibaInu #mainnet #pepecoin #web3 #crypto #arbitrum #OFFICIALTRUMP #memecoins #StreetDogCoin #CryptoForACause #CryptoForACause #DogAdoption #BlockchainForGood #CryptoWithPurpose #SupportAnimalRescue #DogRescue #StreetDogs #CharityCrypto #DogLovers",
   )
   const [existingClaim, setExistingClaim] = useState(false)
   const [systemConfig, setSystemConfig] = useState<any>(null)
