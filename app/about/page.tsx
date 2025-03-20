@@ -176,7 +176,7 @@ export default function AboutPage() {
             >
               <div className="relative rounded-xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DALL%C2%B7E%202025-03-16%2004.47.43%20-%20A%20heartwarming%20digital%20painting%20illustrating%20the%20journey%20of%20a%20stray%20dog%20with%20the%20support%20of%20Street%20Dog%20Coin.%20In%20the%20foreground%2C%20a%20sad%20and%20lonely%20stree-0Wj43TGmXhIC8sy2WrMG8dH1D65YvD.webp"
+                  src="/historia.webp"
                   alt="Street Dog Coin História"
                   width={600}
                   height={400}
