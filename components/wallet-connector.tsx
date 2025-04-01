@@ -182,6 +182,7 @@ export default function WalletConnector({ onConnect, onDisconnect }: WalletConne
       "streetdogcoin.com",
       "www.streetdogcoin.com",
       "airdrop.streetdogcoin.com",
+      "presale.streetdogcoin.com",
       "localhost",
       "vercel.app",
     ]
@@ -193,7 +194,7 @@ export default function WalletConnector({ onConnect, onDisconnect }: WalletConne
   // Verificar se o contrato é seguro
   const verifyContract = useCallback(async () => {
     // Endereço do contrato do Street Dog Coin
-    const contractAddress = "0xA5F0A72A780F69BC6a476Cc6a37E533C2A046434" // Substitua pelo endereço real
+    const contractAddress = "0x422B5a7a73E3330c53D623Ac408873cB56318605" // Substitua pelo endereço real
 
     try {
       // Em um ambiente real, você verificaria se o contrato está verificado no Etherscan/BSCScan

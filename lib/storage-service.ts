@@ -40,7 +40,7 @@ function generateId(): string {
 const DEFAULT_CONFIG: SystemConfig = {
   airdropEnabled: true,
   totalTokensAllocated: 1000000,
-  tokensPerClaim: 100,
+  tokensPerClaim: 1000,
   claimDeadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 dias a partir de agora
   requireTwitter: true,
   requireTelegram: true,
@@ -249,8 +249,8 @@ export function authenticateAdmin(username: string, password: string): boolean {
 
   try {
     // Credenciais de ambiente
-    const ADMIN_USERNAME = process.env.NEXT_PUBLIC_ADMIN_USERNAME || "webytebr"
-    const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "25031961Jralves"
+    const ADMIN_USERNAME = process.env.NEXT_PUBLIC_ADMIN_USERNAME || "admin"
+    const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "changeme"
 
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
       const sessionId = generateId()

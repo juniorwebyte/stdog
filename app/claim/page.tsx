@@ -37,7 +37,7 @@ export default function ClaimPage() {
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2 text-purple-400">Reivindicar Tokens</h1>
-          <p className="text-gray-300">Complete as etapas abaixo para reivindicar seus tokens $STDOG</p>
+          <p className="text-gray-300">Complete as etapas abaixo para reivindicar seus tokens $WBC</p>
         </div>
 
         <LazyAirdropClaim onWalletUpdate={handleWalletUpdate} />

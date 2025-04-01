@@ -21,7 +21,7 @@ Este é o repositório oficial do sistema de airdrop WebyteCoin, uma plataforma 
 
 1. Clone o repositório:
    \`\`\`
-   git clone https://github.com/seu-usuario/webytecoin-airdrop.git
+   git clone https://github.com/juniorwebyte/
    cd webytecoin-airdrop
    \`\`\`
 

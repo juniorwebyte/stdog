@@ -6,6 +6,7 @@ export function verifyDomain(): boolean {
     "streetdogcoin.com",
     "www.streetdogcoin.com",
     "airdrop.streetdogcoin.com",
+    "presale.streetdogcoin.com",
     "localhost",
     "vercel.app",
   ]

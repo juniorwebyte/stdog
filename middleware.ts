@@ -6,6 +6,7 @@ const allowedOrigins = [
   "https://streetdogcoin.com",
   "https://www.streetdogcoin.com",
   "https://airdrop.streetdogcoin.com",
+  "https://presale.streetdogcoin.com",
   "https://vercel.app",
   "https://vercel.com",
 ]

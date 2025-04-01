@@ -33,6 +33,7 @@ export function TransactionGuard({ children, walletAddress, transactionType = "c
         window.location.hostname === "streetdogcoin.com" ||
         window.location.hostname === "www.streetdogcoin.com" ||
         window.location.hostname === "airdrop.streetdogcoin.com" ||
+        window.location.hostname === "presale.streetdogcoin.com" ||
         window.location.hostname.includes("vercel.app") ||
         window.location.hostname === "localhost"
 

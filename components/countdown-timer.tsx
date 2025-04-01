@@ -3,7 +3,13 @@
 import { useEffect, useState, useCallback, useMemo } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Clock, Calendar, Rocket } from "lucide-react"
-import { getLaunchDate } from "@/lib/storage-service"
+
+// CONFIGURAÇÃO MANUAL DO TEMPO
+// Data específica configurada: 30/04/2025 às 23:49:00
+const TARGET_DATE = new Date(2025, 3, 30, 23, 49, 0) // Mês é 0-indexado (0=Jan, 1=Fev, 2=Mar, 3=Abr...)
+
+// Se definido como true, o cronômetro ficará estático (não diminuirá com o tempo)
+const STATIC_COUNTDOWN = false
 
 interface TimeLeft {
   days: number
@@ -20,11 +26,10 @@ export default function CountdownTimer() {
     seconds: 0,
   })
   const [loading, setLoading] = useState(true)
-  const [launchDate, setLaunchDate] = useState<Date | null>(null)
 
   // Usar useCallback para evitar recriação da função em cada renderização
-  const calculateTimeLeft = useCallback((targetDate: Date) => {
-    const difference = targetDate.getTime() - new Date().getTime()
+  const calculateTimeLeft = useCallback(() => {
+    const difference = TARGET_DATE.getTime() - new Date().getTime()
 
     if (difference <= 0) {
       // O lançamento já ocorreu
@@ -40,52 +45,40 @@ export default function CountdownTimer() {
   }, [])
 
   useEffect(() => {
-    // Inicializar com uma data padrão para evitar problemas de renderização
-    let targetDate = new Date()
-    targetDate.setDate(targetDate.getDate() + 15) // 15 dias a partir de agora por padrão
-
-    try {
-      // Tentar obter a data de lançamento do armazenamento
-      const storedLaunchDate = getLaunchDate()
-      if (storedLaunchDate) {
-        targetDate = storedLaunchDate
-        setLaunchDate(storedLaunchDate)
-      }
-    } catch (error) {
-      console.error("Erro ao obter data de lançamento:", error)
-    }
-
     // Calcular imediatamente
-    setTimeLeft(calculateTimeLeft(targetDate))
+    setTimeLeft(calculateTimeLeft())
     setLoading(false)
+
+    // Se o cronômetro for estático, não configure o intervalo
+    if (STATIC_COUNTDOWN) {
+      return
+    }
 
     // Verificar se o usuário prefere reduzir animações
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
     // Atualizar a cada segundo apenas se não preferir reduzir animações
-    const updateInterval = prefersReducedMotion ? 10000 : 100 // 10 segundos ou 1 segundo
+    const updateInterval = prefersReducedMotion ? 10000 : 1000 // 10 segundos ou 1 segundo
 
     // Atualizar a cada segundo
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft(targetDate))
+      setTimeLeft(calculateTimeLeft())
     }, updateInterval)
 
     // Limpar o intervalo quando o componente for desmontado
     return () => clearInterval(timer)
   }, [calculateTimeLeft])
 
-  // Memoizar a formatação da data para evitar recálculos desnecessários
+  // Formatar a data alvo para exibição
   const formattedDate = useMemo(() => {
-    if (!launchDate) return "Em breve"
-
     return new Intl.DateTimeFormat("pt-BR", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-    }).format(launchDate)
-  }, [launchDate])
+    }).format(TARGET_DATE)
+  }, [])
 
   if (loading) {
     return (
@@ -110,7 +103,7 @@ export default function CountdownTimer() {
       <CardContent className="p-6">
         <div className="flex items-center mb-4">
           <Calendar className="h-5 w-5 text-purple-400 mr-2" />
-          <h3 className="text-xl font-bold text-purple-400">Lançamento Oficial do STDOG</h3>
+          <h3 className="text-xl font-bold text-purple-400">Pré-venda encerra em:</h3>
         </div>
 
         <div className="flex items-center justify-center mb-2">
@@ -119,7 +112,7 @@ export default function CountdownTimer() {
 
         <div className="text-center mb-4">
           <p className="text-sm text-gray-300">
-            Data de lançamento: <span className="text-purple-300">{formattedDate}</span>
+            Encerramento: <span className="text-purple-300">{formattedDate}</span>
           </p>
         </div>
 
@@ -144,7 +137,7 @@ export default function CountdownTimer() {
 
         <div className="text-center text-gray-300 text-sm">
           <Clock className="h-4 w-4 inline-block mr-1 text-purple-400" />
-          Participe agora do pré-registro para garantir seus tokens no lançamento oficial!
+          Não perca esta oportunidade! Compre agora antes que a pré-venda termine!
         </div>
       </CardContent>
     </Card>

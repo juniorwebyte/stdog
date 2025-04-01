@@ -17,6 +17,9 @@ import {
   Award,
   ChevronDown,
   ChevronUp,
+  Sparkles,
+  TrendingUp,
+  Zap,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -211,6 +214,27 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
+                {/* Botão de Compra - Novo e Chamativo */}
+                <a
+                  href="https://presale.streetdogcoin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group"
+                >
+                  <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 rounded-lg blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse-slow"></div>
+                  <Button
+                    size="lg"
+                    className="relative flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 text-white font-bold px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-yellow-300"
+                  >
+                    <Sparkles className="h-5 w-5 text-yellow-200 animate-pulse" />
+                    <span className="relative">
+                      COMPRAR AGORA
+                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </span>
+                    <TrendingUp className="h-5 w-5 text-yellow-200" />
+                  </Button>
+                </a>
+
                 <Link href="/claim">
                   <Button
                     size="lg"
@@ -354,6 +378,36 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Banner de Pré-venda - Novo */}
+      <section className="py-6 bg-gradient-to-r from-yellow-600/80 to-red-600/80 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Zap className="h-8 w-8 text-yellow-300 animate-pulse" />
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-white">Pré-venda em andamento!</h3>
+                <p className="text-yellow-200">Preço promocional por tempo limitado</p>
+              </div>
+            </div>
+            <a
+              href="https://presale.streetdogcoin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-white/40 to-yellow-300/40 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
+              <Button
+                size="lg"
+                className="relative bg-white text-red-600 hover:bg-yellow-100 font-bold px-6 py-2 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+              >
+                Comprar com desconto
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* 2. Estatísticas Section */}
       <section id="stats" className="py-12 md:py-16 relative overflow-hidden">
         <div className="container mx-auto px-4">
@@ -368,7 +422,7 @@ export default function Home() {
               <StatCounter value={10000} label="Participantes" />
               <StatCounter value={100} label="$STDOG por Airdrop" />
               <StatCounter value={5} label="Tarefas Simples" />
-              <StatCounter value={4} label="Parceiros Cripto" />
+              <StatCounter value={10} label="Futuras ONGs Beneficiadas" />
             </div>
           </motion.div>
         </div>
@@ -824,13 +878,34 @@ export default function Home() {
                 Não perca a oportunidade de participar do airdrop do Street Dog Coin e fazer parte de uma comunidade que
                 está mudando o mundo dos cães de rua.
               </p>
-              <Link href="/claim">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
-                    Participar do Airdrop
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="https://presale.streetdogcoin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group"
+                >
+                  <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 rounded-lg blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse-slow"></div>
+                  <Button
+                    size="lg"
+                    className="relative flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-red-600 hover:from-yellow-600 hover:to-red-700 text-white font-bold px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-yellow-300"
+                  >
+                    <Sparkles className="h-5 w-5 text-yellow-200 animate-pulse" />
+                    <span className="relative">
+                      COMPRAR AGORA
+                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </span>
+                    <TrendingUp className="h-5 w-5 text-yellow-200" />
                   </Button>
-                </motion.div>
-              </Link>
+                </a>
+                <Link href="/claim">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
+                      Participar do Airdrop
+                    </Button>
+                  </motion.div>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
