@@ -19,16 +19,16 @@ export default function Footer() {
             </div>
             <p className="text-gray-300 mb-4">{t("footer.about.description")}</p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link href="https://x.com/StreetDogCoin" target="_blank" className="text-blue-400 hover:text-blue-300 transition-colors">
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link href="https://www.facebook.com/streetdogcoin?_rdc=1&_rdr#" target="_blank" className="text-blue-400 hover:text-blue-300 transition-colors">
                 <Facebook className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link href="https://www.instagram.com/streetdogcoin/" target="_blank" className="text-blue-400 hover:text-blue-300 transition-colors">
                 <Instagram className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+              <Link href="https://github.com/juniorwebyte" target="_blank" className="text-blue-400 hover:text-blue-300 transition-colors">
                 <Github className="h-5 w-5" />
               </Link>
             </div>
